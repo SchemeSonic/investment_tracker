@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>666827896214-1fk595f2rrptbf9m8qgs5n01rbv6c06c.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.666827896214-1fk595f2rrptbf9m8qgs5n01rbv6c06c</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDtNm3bGTGFU3VfDc5UGTj0aRC5zQsa9f0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>666827896214</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.exampleApp</string>
+	<key>PROJECT_ID</key>
+	<string>investment-tracker-57251</string>
+	<key>STORAGE_BUCKET</key>
+	<string>investment-tracker-57251.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:666827896214:ios:c0094e8c7cd755c993d9b7</string>
+	<key>DATABASE_URL</key>
+	<string>https://investment-tracker-57251.firebaseio.com</string>
+</dict>
+</plist>
