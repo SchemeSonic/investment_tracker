@@ -15,7 +15,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Yatırım'),
+        title: _selectedIndex == 0 ? Text('Anasayfa') : Text('Yatırımlarım'),
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (int index) => setState(() => _selectedIndex = index),
@@ -38,10 +38,9 @@ class _AppState extends State<App> {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  var firebase = await Firebase.initializeApp();
-  print(firebase);
+  await Firebase.initializeApp();
   runApp(MaterialApp(
-    title: 'Shopping App',
+    title: 'Yatırım Uygulaması',
     home: new App()
   ));
 }
