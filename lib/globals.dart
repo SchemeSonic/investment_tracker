@@ -8,6 +8,9 @@ var currencyEnums = {
   2: "gold"
 };
 var iconSet = {
+  "dolar":  FaIcon(FontAwesomeIcons.dollarSign, size: 36.0),
+  "euro":   FaIcon(FontAwesomeIcons.euroSign, size: 36.0),
+  "gold":   FaIcon(FontAwesomeIcons.coins, size: 36.0),
   "red_dolar": FaIcon(FontAwesomeIcons.dollarSign, size: 36.0, color: Colors.red,),
   "green_dolar": FaIcon(FontAwesomeIcons.dollarSign, size: 36.0, color: Colors.green,),
   "red_euro": FaIcon(FontAwesomeIcons.euroSign, size: 36.0, color: Colors.red,),
@@ -19,6 +22,12 @@ var currencyPropNameMap = {
   "dolar": "USDTRY",
   "euro": "EURTRY",
   "gold": "GLDGR"
+};
+
+var propNameCurrencyMap = {
+  "USDTRY": "dolar",
+  "EURTRY": "euro",
+  "GLDGR": "gold"
 };
 var symbols = {
   "dolar": "\$",

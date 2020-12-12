@@ -46,7 +46,7 @@ class _InvestmentCardState extends State<InvestmentCard> {
     var currency = globals.currencyEnums[widget.investment['currency']];
     var symbol = globals.symbols[currency];
     var icon = globals.iconSet["${redColor ? 'red' : 'green'}_" + currency];
-    var rate = (((currentCurrency['SATIS'] / widget.investment['perPrice']) - 1) * 100).abs().toStringAsFixed(3);
+    var rate = (((currentCurrency['SATIS'] / widget.investment['perPrice']) - 1) * 100).abs().toStringAsFixed(2);
 
     _onInvestmentUpdated(investment) {
       widget.callback(investment, "update");
@@ -62,7 +62,7 @@ class _InvestmentCardState extends State<InvestmentCard> {
               children: [
                 ListTile(
                   leading: icon,
-                  title: Text("${widget.investment['amount'] * currentCurrency['SATIS']} TL (${redColor ? "-" : "+"} $rate%)", style: TextStyle(fontWeight: FontWeight.bold, color: redColor ? Colors.red : Colors.green)),
+                  title: Text("${(widget.investment['amount'] * currentCurrency['SATIS']).toStringAsFixed(1)} TL (${redColor ? "-" : "+"} $rate%)", style: TextStyle(fontWeight: FontWeight.bold, color: redColor ? Colors.red : Colors.green)),
                   subtitle: Text(
                     '${currentCurrency['SATIS']} x ${widget.investment['amount']} $symbol',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
@@ -108,7 +108,7 @@ class _InvestmentCardState extends State<InvestmentCard> {
                     Column(
                       children: [
                         Text('Yatırım Miktarı'),
-                        Text('${widget.investment['amount']} $symbol / ${widget.investment['amount'] * widget.investment['perPrice']} TL')
+                        Text('${widget.investment['amount']} $symbol / ${(widget.investment['amount'] * widget.investment['perPrice']).toStringAsFixed(1)} TL')
                         ]
                       )
                   ],

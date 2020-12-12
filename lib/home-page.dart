@@ -9,30 +9,41 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Widget> exchanges = [];
+  var dolarRate, euroRate, goldRate;
   
   getData() async {
     if(exchanges.length > 0)  return;
     var apiClient = new apiclient.ApiClient();
     var currencies = await apiClient.getTodaysExchangeRateV2();
-    globals.currencies = currencies.sublist(3);
-    setState(() {
-      exchanges = currencies.sublist(3).map<Widget>((entry) => 
+    
+    globals.currencies = currencies;
+    dolarRate = currencies.firstWhere( (currency) => currency['ACIKLAMA'] == "EURO/TURK LIRASI");
+    euroRate = currencies.firstWhere( (currency) => currency['ACIKLAMA'] == "DOLAR/TURK LIRASI");
+    goldRate = currencies.firstWhere( (currency) => currency['ACIKLAMA'] == "ALTIN GRAM - TL");
+    
+    var currencyWidget = [dolarRate, euroRate, goldRate].map<Widget>((entry) => 
         ListTile(
-          leading: Icon(Icons.album, size: 50),
+          leading: globals.iconSet[globals.propNameCurrencyMap[entry['SEMBOL']]],
           title: Text(entry['YUKSEK'].toString()),
           subtitle: Text(entry['ACIKLAMA']),
         )).toList();
+    setState(() {
+      exchanges = currencyWidget;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     getData();
-    return Card(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: exchanges,
-      ),
-    );
+    return exchanges.length == 0 ? 
+      Center(
+        child: CircularProgressIndicator(),
+      ) :
+      Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: exchanges,
+        ),
+      );
   }
 }
