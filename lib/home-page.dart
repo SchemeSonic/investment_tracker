@@ -21,6 +21,7 @@ class _HomePageState extends State<HomePage> {
     var currencies = await apiClient.getTodaysExchangeRateV2();
     
     globals.currencies = currencies;
+
     dolarRate = currencies.firstWhere( (currency) => currency['ACIKLAMA'] == "EURO/TURK LIRASI");
     euroRate = currencies.firstWhere( (currency) => currency['ACIKLAMA'] == "DOLAR/TURK LIRASI");
     goldRate = currencies.firstWhere( (currency) => currency['ACIKLAMA'] == "ALTIN GRAM - TL");
@@ -28,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     var currencyWidget = [dolarRate, euroRate, goldRate].map<Widget>((entry) => 
         ListTile(
           leading: globals.iconSet[globals.propNameCurrencyMap[entry['SEMBOL']]],
-          title: Text(entry['YUKSEK'].toString()),
+          title: Text(entry['SATIS'].toString()),
           subtitle: Text(entry['ACIKLAMA']),
         )).toList();
 
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    child: Text("${summary['rate'].toStringAsFixed(1)}%", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.green, fontSize: 40)),
+                    child: Text("${summary['rate'] > 0 ? "+" : ""}${summary['rate'].toStringAsFixed(1)}%", style: TextStyle(fontWeight: FontWeight.bold, color: summary['rate'] >= 0 ? Colors.green : Colors.red, fontSize: 40)),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(topLeft:  Radius.circular(40), bottomLeft:  Radius.circular(40)),
@@ -186,8 +187,8 @@ class _HomePageState extends State<HomePage> {
       initialTotal += investment.amount * investment.perPrice;
     }
     
-    totals['rate'] = (totals['grandTotal'] / initialTotal) * 100;
-    print(totals);
+    totals['rate'] = ((totals['grandTotal'] / initialTotal) - 1) * 100;
+    
     Widget summary = getSummaryContainer(totals);
 
     setState(() {
