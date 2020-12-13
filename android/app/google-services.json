@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "666827896214",
+    "firebase_url": "https://investment-tracker-57251.firebaseio.com",
+    "project_id": "investment-tracker-57251",
+    "storage_bucket": "investment-tracker-57251.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666827896214:android:d89c2c9144f4553393d9b7",
+        "android_client_info": {
+          "package_name": "com.example.example_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666827896214-hk8jf71em285rt3huti03uefsuvb0nhr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdQGQ18kcnJ4tlq3ehl5A0o0l-n09qp2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666827896214-hk8jf71em285rt3huti03uefsuvb0nhr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "666827896214-1fk595f2rrptbf9m8qgs5n01rbv6c06c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.exampleApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
