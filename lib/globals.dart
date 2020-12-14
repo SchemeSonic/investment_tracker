@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-var currencies = [];
+var currencies = {};
 var currencyEnums = {
   0: "dolar",
   1: "euro",
@@ -24,6 +24,12 @@ var currencyPropNameMap = {
   "gold": "GLDGR"
 };
 
+var currencyMap = {
+  "dolar": "ABD DOLARI",
+  "euro": "EURO",
+  "gold": "Gram Altın"
+};
+
 var propNameCurrencyMap = {
   "USDTRY": "dolar",
   "EURTRY": "euro",
@@ -36,7 +42,7 @@ var symbols = {
 };
 
 getCurrency(value) {
-  var currencyType = currencyPropNameMap[currencyEnums[value]];
-  var currency = currencies.where((currency) => currency['SEMBOL'] == currencyType).toList()[0];
+  var currencyType = currencyMap[currencyEnums[value]];
+  var currency = currencies[currencyType];
   return currency;
 }

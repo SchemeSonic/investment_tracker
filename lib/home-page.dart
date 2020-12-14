@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'globals.dart' as globals;
 import 'apiclient.dart' as apiclient;
+import 'utils.dart' as utils;
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,18 +19,18 @@ class _HomePageState extends State<HomePage> {
   getData() async {
     if(exchanges.length > 0)  return;
     var apiClient = new apiclient.ApiClient();
-    var currencies = await apiClient.getTodaysExchangeRateV2();
-    
+    var currencies = await apiClient.getTodaysExchangeRateV3();
+    currencies = utils.UtilsService.prepareCurrencies(currencies);
     globals.currencies = currencies;
-
-    dolarRate = currencies.firstWhere( (currency) => currency['ACIKLAMA'] == "EURO/TURK LIRASI");
-    euroRate = currencies.firstWhere( (currency) => currency['ACIKLAMA'] == "DOLAR/TURK LIRASI");
-    goldRate = currencies.firstWhere( (currency) => currency['ACIKLAMA'] == "ALTIN GRAM - TL");
+    
+    dolarRate = currencies['ABD DOLARI'];
+    euroRate = currencies['EURO'];
+    goldRate = currencies['Gram Altın'];
     
     var currencyWidget = [dolarRate, euroRate, goldRate].map<Widget>((entry) => 
         ListTile(
           leading: globals.iconSet[globals.propNameCurrencyMap[entry['SEMBOL']]],
-          title: Text(entry['SATIS'].toString()),
+          title: Text(entry['Satış'].toString()),
           subtitle: Text(entry['ACIKLAMA']),
         )).toList();
 
@@ -173,15 +174,15 @@ class _HomePageState extends State<HomePage> {
 
       if (investment.currency == 0) {
         totals['totalDolar'] += investment.amount;
-        totals['grandTotal'] += investment.amount * dolarRate['SATIS'];
+        totals['grandTotal'] += investment.amount * dolarRate['Satış'];
       }
       if (investment.currency == 1) {
         totals['totalEuro'] += investment.amount;
-        totals['grandTotal'] += investment.amount * euroRate['SATIS'];
+        totals['grandTotal'] += investment.amount * euroRate['Satış'];
       }
       if (investment.currency == 2) {
         totals['totalGold'] += investment.amount;
-        totals['grandTotal'] += investment.amount * goldRate['SATIS'];
+        totals['grandTotal'] += investment.amount * goldRate['Satış'];
       }
 
       initialTotal += investment.amount * investment.perPrice;

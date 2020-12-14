@@ -24,7 +24,7 @@ class InvestmentForm extends StatefulWidget {
 class _InvestmentFormState extends State<InvestmentForm> {
   final _formKey = GlobalKey<FormState>();
   var _amountController = TextEditingController();
-  var _perPriceController = TextEditingController(text: globals.currencies.where((currency) => currency['SEMBOL'] == "USDTRY").toList()[0]["SATIS"].toString());
+  var _perPriceController = TextEditingController(text: globals.currencies['ABD DOLARI']["Satış"].toString());
   var _dateController = TextEditingController(text: DateFormat("yyyy-MM-dd").format(DateTime.now()));
   int _currency = 0;
   String mode = "create";
@@ -33,7 +33,7 @@ class _InvestmentFormState extends State<InvestmentForm> {
   void _handleRadioValueChange1(value) => setState(() {
     _currency = value;
     var currency = globals.getCurrency(value);
-    _perPriceController.text = currency["SATIS"].toString();
+    _perPriceController.text = currency["Satış"].toString();
   });
 
   void _selectDate() => {

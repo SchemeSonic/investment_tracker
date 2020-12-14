@@ -42,11 +42,11 @@ class _InvestmentCardState extends State<InvestmentCard> {
   @override
   Widget build(BuildContext context) {
     var currentCurrency = globals.getCurrency(widget.investment['currency']);
-    var redColor = currentCurrency['SATIS'] < widget.investment['perPrice'];
+    var redColor = currentCurrency['Satış'] < widget.investment['perPrice'];
     var currency = globals.currencyEnums[widget.investment['currency']];
     var symbol = globals.symbols[currency];
     var icon = globals.iconSet["${redColor ? 'red' : 'green'}_" + currency];
-    var rate = (((currentCurrency['SATIS'] / widget.investment['perPrice']) - 1) * 100).abs().toStringAsFixed(2);
+    var rate = (((currentCurrency['Satış'] / widget.investment['perPrice']) - 1) * 100).abs().toStringAsFixed(2);
 
     _onInvestmentUpdated(investment) {
       widget.callback(investment, "update");
@@ -62,9 +62,9 @@ class _InvestmentCardState extends State<InvestmentCard> {
               children: [
                 ListTile(
                   leading: icon,
-                  title: Text("${(widget.investment['amount'] * currentCurrency['SATIS']).toStringAsFixed(1)} TL (${redColor ? "-" : "+"} $rate%)", style: TextStyle(fontWeight: FontWeight.bold, color: redColor ? Colors.red : Colors.green)),
+                  title: Text("${(widget.investment['amount'] * currentCurrency['Satış']).toStringAsFixed(1)} TL (${redColor ? "-" : "+"} $rate%)", style: TextStyle(fontWeight: FontWeight.bold, color: redColor ? Colors.red : Colors.green)),
                   subtitle: Text(
-                    '${currentCurrency['SATIS']} x ${widget.investment['amount']} $symbol',
+                    '${currentCurrency['Satış']} x ${widget.investment['amount']} $symbol',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                   ),
                   trailing: IconButton(

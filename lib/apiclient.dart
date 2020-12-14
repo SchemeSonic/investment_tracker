@@ -5,6 +5,20 @@ import 'package:xml2json/xml2json.dart';
 class ApiClient {
   final xmlTransformer = Xml2Json();
 
+  getTodaysExchangeRateV3() async {
+    String url = "https://finans.truncgil.com/today.json";
+
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      var body = utf8.decode(response.bodyBytes);
+      var currencies = json.decode(body);
+      return currencies;
+    } else {
+      print('${response.statusCode}.');
+      return {};
+    }
+  }
+
   getTodaysExchangeRateV2() async {
     String url = "https://api.bigpara.hurriyet.com.tr/doviz/headerlist/anasayfa";
 
