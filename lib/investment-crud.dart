@@ -138,10 +138,14 @@ class _InvestmentFormState extends State<InvestmentForm> {
             TextFormField(
               onTap: _selectDate,
               controller: _dateController,
+              decoration: InputDecoration(
+                labelText: 'Yatırım Tarihi'
+              )
             ),
             TextFormField(
               decoration: InputDecoration(
                 hintText: 'Biriminin kaç TL olduğunu giriniz.',
+                labelText: 'Birim Fiyat'
               ),
               controller: _perPriceController,
               keyboardType: TextInputType.numberWithOptions(signed: false, decimal: true),
@@ -155,6 +159,7 @@ class _InvestmentFormState extends State<InvestmentForm> {
             TextFormField(
               decoration: InputDecoration(
                 hintText: _currency == 2 ? 'Gram giriniz.' : 'Yatırım yapılan miktarı giriniz.',
+                labelText: 'Yatırım Miktarı'
               ),
               controller: _amountController,
               keyboardType: TextInputType.numberWithOptions(signed: false, decimal: true),
