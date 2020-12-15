@@ -1,4 +1,4 @@
-# example_app
+# investment_tracker
 
 A new Flutter project.
 

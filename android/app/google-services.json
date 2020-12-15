@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:666827896214:android:d89c2c9144f4553393d9b7",
+        "mobilesdk_app_id": "1:666827896214:android:1ca72d381bcc849e93d9b7",
         "android_client_info": {
-          "package_name": "com.example.example_app"
+          "package_name": "com.example.investment_tracker"
         }
       },
       "oauth_client": [
