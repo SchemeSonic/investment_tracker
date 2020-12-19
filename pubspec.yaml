@@ -30,6 +30,9 @@ dependencies:
   intl: ^0.16.1
   font_awesome_flutter: ^8.10.0
   flushbar: ^1.10.4
+  firebase_auth: ^0.18.4+1
+  google_sign_in: ^4.5.6
+  flutter_signin_button: ^1.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
