@@ -22,7 +22,7 @@ Future<void> signInWithFacebook(onUserLoggedIn) async {
             'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=$token');
       final profile = json.decode(graphResponse.body);
       globals.currentUser = profile;
-      print(profile);
+      globals.currentUserEmail = profile['email'];
       onUserLoggedIn();
       break;
     case FacebookLoginStatus.cancelledByUser:
@@ -53,7 +53,7 @@ Future<String> signInWithGoogle(onUserLoggedIn) async {
   final User currentUser = _auth.currentUser;
   globals.currentUser = currentUser;
   assert(user.uid == currentUser.uid);
-  print(currentUser);
+  globals.currentUserEmail = currentUser.email;
   onUserLoggedIn();
   return 'signInWithGoogle succeeded: $user';
 }

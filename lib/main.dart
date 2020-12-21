@@ -20,6 +20,15 @@ class _AppState extends State<App> {
       Scaffold(
         appBar: AppBar(
           title: _selectedIndex == 0 ? Text('Anasayfa') : Text('Yatırımlarım'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () {
+                setState(() {
+                  _userLoggedIn = false;
+                });
+              },
+            )]
         ),
         bottomNavigationBar: BottomNavigationBar(
           onTap: (int index) => setState(() => _selectedIndex = index),

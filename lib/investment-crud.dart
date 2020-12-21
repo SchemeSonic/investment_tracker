@@ -9,6 +9,7 @@ class Investment {
   double perPrice;
   double amount;
   String date;
+  String email;
   Investment(this.id, this.currency, this.date, this.perPrice, this.amount);
 }
 
@@ -56,7 +57,8 @@ class _InvestmentFormState extends State<InvestmentForm> {
           "currency": investment.currency,
           "perPrice": investment.perPrice,
           "amount": investment.amount,
-          "date": investment.date
+          "date": investment.date,
+          "email": globals.currentUserEmail
         });
   }
 
@@ -67,7 +69,8 @@ class _InvestmentFormState extends State<InvestmentForm> {
           "currency": investment.currency,
           "perPrice": investment.perPrice,
           "amount": investment.amount,
-          "date": investment.date
+          "date": investment.date,
+          "email": globals.currentUserEmail
         });
   }
 

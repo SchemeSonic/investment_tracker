@@ -167,7 +167,7 @@ class _HomePageState extends State<HomePage> {
     };
 
     CollectionReference investmentAPI = FirebaseFirestore.instance.collection('Investments');
-    QuerySnapshot snapshot = await investmentAPI.get();
+    QuerySnapshot snapshot = await investmentAPI.where('email', isEqualTo: globals.currentUserEmail).get();
     for (var doc in snapshot.docs) {
       var data = doc.data();
       var investment = new Investment(null, data['currency'], data['date'], data['perPrice'], data['amount']);

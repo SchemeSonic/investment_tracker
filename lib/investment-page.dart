@@ -166,7 +166,7 @@ class _InvestmentsState extends State<Investments> {
     investmentList = [];
 
     return FutureBuilder<QuerySnapshot>(
-      future: investmentAPI.get(),
+      future: investmentAPI.where('email', isEqualTo: globals.currentUserEmail).get(),
       builder:
           (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
 
