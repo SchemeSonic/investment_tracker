@@ -1,11 +1,9 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'globals.dart' as globals;
-import 'package:http/http.dart' as http;
 
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -18,12 +16,28 @@ Future<void> signInWithFacebook(onUserLoggedIn) async {
   switch (result.status) {
     case FacebookLoginStatus.loggedIn:
       String token = result.accessToken.token;
-      final graphResponse = await http.get(
-            'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=$token');
-      final profile = json.decode(graphResponse.body);
-      globals.currentUser = profile;
-      globals.currentUserEmail = profile['email'];
-      onUserLoggedIn();
+      
+      final AuthCredential credential = FacebookAuthProvider.credential(token);
+      
+      _auth.signInWithCredential(credential).then((UserCredential authResult) async {
+
+        final User user = authResult.user;
+        
+        assert(!user.isAnonymous);
+        assert(await user.getIdToken() != null);
+
+        final User currentUser = _auth.currentUser;
+        globals.currentUser = currentUser;
+        
+        assert(user.uid == currentUser.uid);
+
+      }).catchError((error) {
+        if(error.code == "account-exists-with-different-credential"){
+          _auth.fetchSignInMethodsForEmail(error.email).then((List<String> methods) {
+            if(methods.indexOf("google.com") > -1) signInWithGoogle(onUserLoggedIn);
+          });
+        }
+      });
       break;
     case FacebookLoginStatus.cancelledByUser:
       print("Facebook login Canceled by User");
@@ -53,8 +67,9 @@ Future<String> signInWithGoogle(onUserLoggedIn) async {
   final User currentUser = _auth.currentUser;
   globals.currentUser = currentUser;
   assert(user.uid == currentUser.uid);
-  globals.currentUserEmail = currentUser.email;
+  
   onUserLoggedIn();
+
   return 'signInWithGoogle succeeded: $user';
 }
 

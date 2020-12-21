@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'home-page.dart';
 import 'investment-page.dart';
 import 'login.dart';
+import 'globals.dart' as globals;
 
 class App extends StatefulWidget {
   @override
@@ -12,6 +14,18 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   bool _userLoggedIn = false;
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    final User user = FirebaseAuth.instance.currentUser;
+    if(user != null) {
+      globals.currentUser = user;
+      setState(() {
+        _userLoggedIn = true;
+      });
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +38,7 @@ class _AppState extends State<App> {
             IconButton(
               icon: Icon(Icons.logout),
               onPressed: () {
+                FirebaseAuth.instance.signOut();
                 setState(() {
                   _userLoggedIn = false;
                 });

@@ -58,7 +58,7 @@ class _InvestmentFormState extends State<InvestmentForm> {
           "perPrice": investment.perPrice,
           "amount": investment.amount,
           "date": investment.date,
-          "email": globals.currentUserEmail
+          "email": globals.currentUser.email
         });
   }
 
@@ -70,7 +70,7 @@ class _InvestmentFormState extends State<InvestmentForm> {
           "perPrice": investment.perPrice,
           "amount": investment.amount,
           "date": investment.date,
-          "email": globals.currentUserEmail
+          "email": globals.currentUser.email
         });
   }
 
