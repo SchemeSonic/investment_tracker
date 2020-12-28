@@ -29,7 +29,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.183916221461-sf4gbtpoq74b3ccidplrkria8b9kgstf</string>
+				<string>com.googleusercontent.apps.666827896214-mgocqkuduck4f4t0ka46lglgb6h58gre</string>
 				<string>fb229485021921697</string>
 			</array>
 		</dict>
@@ -48,13 +48,13 @@
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>CLIENT_ID</key>
-	<string>183916221461-sf4gbtpoq74b3ccidplrkria8b9kgstf.apps.googleusercontent.com</string>
+	<string>666827896214-mgocqkuduck4f4t0ka46lglgb6h58gre.apps.googleusercontent.com</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.183916221461-sf4gbtpoq74b3ccidplrkria8b9kgstf</string>
+	<string>com.googleusercontent.apps.666827896214-mgocqkuduck4f4t0ka46lglgb6h58gre</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
