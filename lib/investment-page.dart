@@ -181,6 +181,19 @@ class _InvestmentsState extends State<Investments> {
             _investments.add(investment);
             investmentList.add(new InvestmentCard(investment: investment, callback: onInvestmentAction));
           }
+
+          if(investmentList.length == 0) {
+            return Center(child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.info, size: 60, color: Colors.blue,),
+                Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Text("Henüz yatırımınız bulunmamaktadır. Artı tuşunu kullanarak yatırım oluşturabilirsiniz!", textAlign: TextAlign.center,textScaleFactor: 1.6,)
+                )
+              ]
+            ),);
+          }
           
           return ListView(children: investmentList);
         }
