@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    child: Text("${summary['rate'] > 0 ? "+" : ""}${summary['rate'].toStringAsFixed(1)}%", style: TextStyle(fontWeight: FontWeight.bold, color: summary['rate'] >= 0 ? Colors.green : Colors.red, fontSize: 40)),
+                    child: Text("${summary['rate'] > 0 ? "+" : ""}${summary['rate']}%", style: TextStyle(fontWeight: FontWeight.bold, color: summary['rate'] >= 0 ? Colors.green : Colors.red, fontSize: 40)),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(topLeft:  Radius.circular(40), bottomLeft:  Radius.circular(40)),
@@ -189,6 +189,7 @@ class _HomePageState extends State<HomePage> {
     }
     
     totals['rate'] = ((totals['grandTotal'] / initialTotal) - 1) * 100;
+    totals['rate'] = totals['rate'].isNaN ? 0.0 : totals['rate'];
     
     Widget summary = getSummaryContainer(totals);
 

@@ -171,7 +171,7 @@ class _InvestmentsState extends State<Investments> {
           (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
 
         if (snapshot.hasError) {
-          return Text("Something went wrong");
+          return Text("Birşeyler yanlış gitti.");
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
