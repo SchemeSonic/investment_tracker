@@ -1,16 +1,36 @@
-# investment_tracker
+# Simple Investment Tracking App 
 
-A new Flutter project.
+Track your investments: follow your profit and loss
 
-## Getting Started
+- Data is gathered from https://finans.truncgil.com/today.json 
 
-This project is a starting point for a Flutter application.
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+## Dashboard
+- Total investment balance
+- Percentage of profit
+- Today's foreign currency and gold rates
 
-A few resources to get you started if this is your first Flutter project:
+<img alt="Dashboard" src="./assets/home.png" />
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Investment List
+- All investments
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img alt="List" src="./assets/list.png" />
+
+## New Investment
+- Create new investment
+
+<img alt="Create" src="./assets/create.png" />
+
+## New Investment
+- Update investment
+
+<img alt="Update" src="./assets/update.png" />
+
+## Author
+
+SchemeSonic, haldun313@gmail.com
+
+## License
+
+Project is available under the MIT license. See the LICENSE file for more info.
